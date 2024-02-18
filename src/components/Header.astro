@@ -5,16 +5,20 @@
 </header>
 
 <style lang="scss">
+	@import '../assets/styles/mixins.scss';
+
 	.header {
+		background-color: var(--color-neutral-80);
+
 		&__content {
+			@include max-content();
 			align-items: center;
 			display: flex;
 			height: 70px;
 			justify-content: space-between;
-			margin: auto;
-			max-width: var(---max-width);
-			
+
 			.name {
+				color: var(--color-neutral-00);
 				font-size: 22px;
 				font-weight: bold;
 				text-decoration: none;
