@@ -1,0 +1,56 @@
+---
+import { Image } from 'astro:assets';
+
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import dianaPhoto from '../assets/images/diana-photo.png';
+---
+
+<Layout title="Diana Navarro">
+	<Header/>
+	<main class="homeMain">
+		<section class="homeMain__hero">
+			<div class="heroContent">
+				<h1 class="heroContent__title">Diana Navarro</h1>
+				<p class="heroContent__position">Frontend developer</p>
+				<p class="heroContent__description">I'm a software engineer who loves frontend development with seven years of experience in the field, especially in startups enviroments.</p>
+			</div>
+			<Image class="heroImage" src={dianaPhoto} alt="Diana Navarro"/>
+		</section>
+	</main>
+	<Footer/>
+</Layout>
+
+
+<style lang="scss">
+	.homeMain {
+		&__hero {
+			display: flex;
+			justify-content: space-between;
+			margin: auto;
+			max-width: var(---max-width);
+			
+			.heroContent {
+				&__title {
+					font-size: 26px;
+					margin: 0 0 16px;
+				}
+
+				&__position {
+					font-size: 24px;
+					margin: 0 0 8px;
+				}
+
+				&__description {
+					font-size: 22px;
+				}
+			}
+
+			.heroImage {
+				width: 100px;
+				height: 100px;
+			}
+		}
+	}
+</style>
