@@ -1,0 +1,16 @@
+@mixin font-style($color, $size, $weight: regular) {
+  color: var(--color-#{$color});
+  font-family: "Nunito";
+  font-size: var(--font-size-#{$size});
+  font-weight: var(--font-weight-#{$weight});
+}
+
+@mixin max-content() {
+  @media (max-width: 1200px) {
+    padding: 0 24px;
+  }
+  @media (min-width: 1200px) {
+    margin: auto;
+    max-width: var(--max-width);
+  }
+}

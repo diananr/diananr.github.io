@@ -24,7 +24,16 @@ const { title } = Astro.props;
 </html>
 <style is:global>
 	:root {
-		---max-width: 1200px;
+		--color-neutral-80: #242530;
+		--color-neutral-70: #282a36;
+		--color-neutral-60: #343841;
+		--color-neutral-00: #ffffff;
+		--font-size-56: 56px;
+		--font-size-24: 24px;
+		--font-size-18: 18px;
+		--font-weight-bold: bold;
+		--font-weight-regular: 400;
+		--max-width: 1200px;
 	}
 	* {
 		box-sizing: border-box;
@@ -32,5 +41,8 @@ const { title } = Astro.props;
 	}
 	html {
 		font-family: "Nunito", sans-serif;
+	}
+	body {
+		background-color: var(--color-neutral-70);
 	}
 </style>
