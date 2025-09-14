@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content';
+const allPosts = await getCollection('journal');
+
+import Layout from '../../layouts/Layout.astro';
+import JournalPost from '../../components/JournalPost.astro';
+---
+
+<Layout title="Journal | Diana Navarro">
+  <h1 class="title">Journal</h1>
+  <p>
+    My space to record notes and daily learnings about technology and
+    management.
+  </p>
+  <ul class="list">
+    {allPosts.map((post) => <JournalPost post={post} />)}
+  </ul>
+</Layout>
+
+<style lang="scss">
+  @import '../../assets/styles/mixins.scss';
+
+  .title {
+    margin: 0 0 16px;
+  }
+
+  .list {
+    padding: 0;
+    list-style: none;
+    margin: 16px 0 0;
+  }
+</style>

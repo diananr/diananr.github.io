@@ -1,6 +1,6 @@
 @mixin font-style($color, $size, $weight: regular) {
   color: var(--color-#{$color});
-  font-family: "Nunito";
+  font-family: 'Nunito';
   font-size: var(--font-size-#{$size});
   font-weight: var(--font-weight-#{$weight});
 }

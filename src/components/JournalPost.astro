@@ -1,0 +1,84 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+type JournalEntry = CollectionEntry<'journal'>;
+
+interface Props {
+  post: JournalEntry;
+}
+const { post } = Astro.props;
+const { title, date, tags } = post.data;
+---
+
+<li class="journalPost">
+  <a class="journalPost__link" href={`/journal/${post.id}`}>
+    <h2 class="title">{title}</h2>
+    <time class="date" datetime={date}>
+      {
+        new Date(date).toLocaleDateString('es-ES', {
+          year: 'numeric',
+          month: 'short',
+          day: 'numeric',
+        })
+      }
+    </time>
+    {
+      tags.length > 0 && (
+        <ul class="tagList">
+          {tags.map((cat) => (
+            <li class="tagList__item">{cat}</li>
+          ))}
+        </ul>
+      )
+    }
+  </a>
+</li>
+
+<style lang="scss">
+  @import '../assets/styles/mixins.scss';
+
+  .journalPost {
+    padding: 16px 0;
+
+    &__link {
+      text-decoration: none;
+      color: var(--color-neutral-00);
+
+      .date {
+        font-size: 14px;
+      }
+
+      .tagList {
+        display: flex;
+        list-style: none;
+        padding: 0;
+        margin: 12px 0 0;
+        gap: 8px;
+
+        &__item {
+          background-color: #e0e7ff;
+          color: #3730a3;
+          font-size: 12px;
+          font-weight: 600;
+          padding: 0.25rem 0.5rem;
+          border-radius: 0.375rem;
+          cursor: default;
+          transition:
+            background-color 0.2s ease,
+            color 0.2s ease;
+
+          &:hover,
+          &:focus {
+            background-color: #c7d2fe;
+            color: #1e3a8a;
+            outline: none;
+          }
+        }
+      }
+    }
+
+    &:hover {
+      background-color: rgb(66 68 85 / 75%);
+    }
+  }
+</style>

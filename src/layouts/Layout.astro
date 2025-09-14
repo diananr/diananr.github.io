@@ -1,48 +1,77 @@
 ---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
 interface Props {
-	title: string;
+  title: string;
+  description?: string;
 }
 
-const { title } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Frontend developer" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Frontend developer" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header />
+    <main class="mainContent">
+      <slot />
+    </main>
+    <Footer />
+  </body>
 </html>
-<style is:global>
-	:root {
-		--color-neutral-80: #242530;
-		--color-neutral-70: #282a36;
-		--color-neutral-60: #343841;
-		--color-neutral-00: #ffffff;
-		--font-size-56: 56px;
-		--font-size-24: 24px;
-		--font-size-18: 18px;
-		--font-weight-bold: bold;
-		--font-weight-regular: 400;
-		--max-width: 1200px;
-	}
-	* {
-		box-sizing: border-box;
-		margin: 0;
-	}
-	html {
-		font-family: "Nunito", sans-serif;
-	}
-	body {
-		background-color: var(--color-neutral-70);
-	}
+<style is:global lang="scss">
+  @import '../assets/styles/mixins.scss';
+  :root {
+    --color-neutral-80: #242530;
+    --color-neutral-70: #282a36;
+    --color-neutral-60: #343841;
+    --color-neutral-00: #ffffff;
+    --font-size-56: 56px;
+    --font-size-24: 24px;
+    --font-size-18: 18px;
+    --font-weight-bold: bold;
+    --font-weight-regular: 400;
+    --max-width: 1200px;
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+  }
+  html {
+    font-family: 'Nunito', sans-serif;
+  }
+  body {
+    background-color: var(--color-neutral-70);
+    color: var(--color-neutral-00);
+  }
+
+  a {
+    color: var(--color-neutral-00);
+  }
+
+  .mainContent {
+    @include max-content();
+    padding: 6rem 0 10rem;
+  }
+
+  @media (max-width: 480px) {
+    .mainContent {
+      padding: 3rem 1rem;
+    }
+  }
 </style>
