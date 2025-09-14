@@ -2,82 +2,76 @@
 import { Image } from 'astro:assets';
 
 import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 
 import dianaPhoto from '../assets/images/diana-photo.png';
 ---
 
 <Layout title="Diana Navarro">
-	<Header/>
-	<main class="homeMain">
-		<section class="homeMain__hero">
-			<div class="heroContent">
-				<h1 class="heroContent__title">Diana Navarro</h1>
-				<p class="heroContent__position">Frontend developer</p>
-				<p class="heroContent__description">I'm a software engineer who loves frontend development with seven years of experience in the field, especially in startups enviroments.</p>
-			</div>
-			<div class="heroImage">
-				<Image class="heroImage__photo" src={dianaPhoto} alt="Diana Navarro"/>
-			</div>
-		</section>
-	</main>
-	<Footer/>
+  <main class="homeMain">
+    <section class="homeMain__hero">
+      <div class="heroContent">
+        <h1 class="heroContent__title">Diana Navarro</h1>
+        <p class="heroContent__position">Frontend engineer</p>
+        <p class="heroContent__description">
+          I'm a software engineer who loves frontend development with seven
+          years of experience in the field, especially in startups enviroments.
+        </p>
+      </div>
+      <div class="heroImage">
+        <Image class="heroImage__photo" src={dianaPhoto} alt="Diana Navarro" />
+      </div>
+    </section>
+  </main>
 </Layout>
 
-
 <style lang="scss">
-	@import '../assets/styles/mixins.scss';
+  @import '../assets/styles/mixins.scss';
 
-	.homeMain {
-		padding: 6rem 0 10rem;
-		
-		&__hero {
-			@include max-content();
-			align-items: center;
-			display: flex;
-			gap: 80px;
-			justify-content: space-between;
-			
-			.heroContent {
-				flex: 1;
+  .homeMain {
+    &__hero {
+      align-items: center;
+      display: flex;
+      gap: 80px;
+      justify-content: space-between;
 
-				&__title {
-					@include font-style(neutral-00, 56, bold);
-					margin: 0 0 20px;
-				}
+      .heroContent {
+        flex: 1;
 
-				&__position {
-					@include font-style(neutral-00, 24, bold);
-					margin: 0 0 16px;
-				}
+        &__title {
+          @include font-style(neutral-00, 56, bold);
+          margin: 0 0 20px;
+        }
 
-				&__description {
-					@include font-style(neutral-00, 18);
-					font-size: 18px;
-				}
-			}
+        &__position {
+          @include font-style(neutral-00, 24, bold);
+          margin: 0 0 16px;
+        }
 
-			.heroImage {
-				flex: 1;
+        &__description {
+          @include font-style(neutral-00, 18);
+          font-size: 18px;
+        }
+      }
 
-				&__photo {
-					background-color: #eae5e1;
-					border-radius: 50% 0;
-					border: 1px solid #eae5e1;
-					height: 300px;
-					width: 300px;
-				}
-			}
-		}
-	}
+      .heroImage {
+        flex: 1;
 
-	@media (max-width: 480px) {
-		.homeMain {
-			padding: 3rem 0 5rem;
-			&__hero {
-				flex-direction: column-reverse;
-			}
-		}
-	}
+        &__photo {
+          background-color: #eae5e1;
+          border-radius: 50% 0;
+          border: 1px solid #eae5e1;
+          height: 300px;
+          width: 300px;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .homeMain {
+      &__hero {
+        flex-direction: column-reverse;
+      }
+    }
+  }
 </style>
