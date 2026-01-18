@@ -1,8 +1,6 @@
 ---
 import { Image } from 'astro:assets';
-
 import Layout from '../layouts/Layout.astro';
-
 import dianaPhoto from '../assets/images/diana-photo.png';
 ---
 
@@ -11,10 +9,12 @@ import dianaPhoto from '../assets/images/diana-photo.png';
     <section class="homeMain__hero">
       <div class="heroContent">
         <h1 class="heroContent__title">Diana Navarro</h1>
-        <p class="heroContent__position">Frontend engineer</p>
+        <p class="heroContent__position">Senior Frontend Engineer</p>
         <p class="heroContent__description">
-          I'm a software engineer who loves frontend development with seven
-          years of experience in the field, especially in startups enviroments.
+          Software Engineer with 8+ years of experience building high-impact
+          digital products. I am a collaborative team player who works
+          effectively with cross-functional teams to deliver scalable solutions
+          on time while consistently achieving business goals.
         </p>
       </div>
       <div class="heroImage">
@@ -28,49 +28,104 @@ import dianaPhoto from '../assets/images/diana-photo.png';
   @import '../assets/styles/mixins.scss';
 
   .homeMain {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 24px;
+
     &__hero {
       align-items: center;
       display: flex;
       gap: 80px;
       justify-content: space-between;
-
-      .heroContent {
-        flex: 1;
-
-        &__title {
-          @include font-style(neutral-00, 56, bold);
-          margin: 0 0 20px;
-        }
-
-        &__position {
-          @include font-style(neutral-00, 24, bold);
-          margin: 0 0 16px;
-        }
-
-        &__description {
-          @include font-style(neutral-00, 18);
-          font-size: 18px;
-        }
-      }
-
-      .heroImage {
-        flex: 1;
-
-        &__photo {
-          background-color: #eae5e1;
-          border-radius: 50% 0;
-          border: 1px solid #eae5e1;
-          height: 300px;
-          width: 300px;
-        }
-      }
     }
   }
 
-  @media (max-width: 480px) {
+  .heroContent {
+    flex: 1;
+    max-width: 600px;
+
+    &__title {
+      @include font-style(neutral-00, 56, bold);
+      margin: 0 0 12px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    &__position {
+      @include font-style(accent-primary, 20, bold);
+      margin: 0 0 24px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    &__description {
+      @include font-style(neutral-40, 18, normal);
+      max-width: 500px;
+    }
+  }
+
+  .heroImage {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__photo {
+      background-color: #eae5e1;
+      border-radius: 50% 0;
+      border: 4px solid #eae5e1;
+      height: 320px;
+      width: 320px;
+      object-fit: cover;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+
+      &:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+  @media (max-width: 768px) {
     .homeMain {
+      padding: 0;
+
       &__hero {
         flex-direction: column-reverse;
+        gap: 40px;
+        padding: 32px 0;
+        min-height: auto;
+        text-align: center;
+      }
+    }
+
+    .heroContent {
+      max-width: 100%;
+
+      &__title {
+        font-size: 40px;
+        margin-bottom: 16px;
+      }
+
+      &__position {
+        font-size: 16px;
+        margin-bottom: 20px;
+      }
+
+      &__description {
+        font-size: 16px;
+        max-width: 100%;
+        margin: 0 auto;
+      }
+    }
+
+    .heroImage {
+      &__photo {
+        height: 240px;
+        width: 240px;
+        border-width: 3px;
       }
     }
   }
