@@ -1,0 +1,37 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Timeline from '../components/Timeline.astro';
+---
+
+<Layout className="journey" title="Journey - Diana Navarro">
+  <section class="journey__header">
+    <h1 class="title">My Journey</h1>
+  </section>
+  <Timeline />
+</Layout>
+
+<style lang="scss">
+  @import '../assets/styles/mixins.scss';
+
+  .journey {
+    margin: 0 auto;
+    padding: 40px 20px;
+
+    &__header {
+      margin: 0 0 24px;
+      text-align: center;
+
+      .title {
+        @include font-style(neutral-00, 56, bold);
+        background: linear-gradient(
+          135deg,
+          var(--color-accent-primary),
+          var(--color-accent-secondary)
+        );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+    }
+  }
+</style>
